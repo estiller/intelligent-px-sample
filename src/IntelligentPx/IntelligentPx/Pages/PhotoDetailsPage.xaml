@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IntelligentPx.Pages.PhotoDetailsPage"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:rootPageModel="clr-namespace:IntelligentPx.PageModels;assembly=IntelligentPx"
+             d:DataContext="{d:DesignInstance rootPageModel:PhotoDetailsPageModel}"
+             Title="{Binding Photo.Name}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <Image Source="{Binding Photo.Images.FullImage.HttpsUrl}"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Photo.CopyrightNotice}" FontAttributes="Bold"/>
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Photo.FullUrl}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Description:" FontAttributes="Bold"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Photo.Description}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Camera:" FontAttributes="Bold"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding Photo.Camera}"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="Lens:" FontAttributes="Bold"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding Photo.Lens}"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" Text="Created At:" FontAttributes="Bold"/>
+                    <Label Grid.Row="5" Grid.Column="1" Text="{Binding Photo.CreatedAt}"/>
+
+                    <Label Grid.Row="6" Grid.Column="0" Text="Rating:" FontAttributes="Bold"/>
+                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding Photo.Rating}"/>
+
+                    <Label Grid.Row="7" Grid.Column="0" Text="Votes Count:" FontAttributes="Bold"/>
+                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding Photo.VotesCount}"/>
+
+                    <Label Grid.Row="8" Grid.Column="0" Text="Favorites Count:" FontAttributes="Bold"/>
+                    <Label Grid.Row="8" Grid.Column="1" Text="{Binding Photo.FavoritesCount}"/>
+
+                    <Label Grid.Row="9" Grid.Column="0" Text="Comments Count:" FontAttributes="Bold"/>
+                    <Label Grid.Row="9" Grid.Column="1" Text="{Binding Photo.CommentsCount}"/>
+                </Grid>
+
+                <Grid Padding="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- ReSharper disable once Xaml.BindingWithContextNotResolved -->
+                    <Picker Grid.Column="0" Title="Choose action"  ItemsSource="{Binding CognitiveActions}" SelectedItem="{Binding SelectedAction}" ItemDisplayBinding="{Binding Name}" />
+                    <Button Grid.Column="1" Text="Open" Command="{Binding Open}" />
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

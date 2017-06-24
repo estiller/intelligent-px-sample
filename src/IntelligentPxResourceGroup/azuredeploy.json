@@ -1,0 +1,99 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "S1"
+      },
+      "kind": "Bing.Autosuggest",
+      "name": "IntelligentPx_BingAutosuggest",
+      "apiVersion": "2016-02-01-preview",
+      "location": "global",
+      "scale": null,
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "F0"
+      },
+      "kind": "Bing.Speech",
+      "name": "IntelligentPx_BingSpeech",
+      "apiVersion": "2016-02-01-preview",
+      "location": "global",
+      "scale": null,
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "F0"
+      },
+      "kind": "Emotion",
+      "name": "IntelligentPx_Emotion",
+      "apiVersion": "2016-02-01-preview",
+      "location": "westus",
+      "scale": null,
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "F0"
+      },
+      "kind": "TextAnalytics",
+      "name": "IntelligentPx_TextAnalysis",
+      "apiVersion": "2016-02-01-preview",
+      "location": "westus",
+      "scale": null,
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "F0"
+      },
+      "kind": "TextTranslation",
+      "name": "IntelligentPx_TranslatorText",
+      "apiVersion": "2016-02-01-preview",
+      "location": "global",
+      "scale": null,
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "F0"
+      },
+      "kind": "ComputerVision",
+      "name": "IntelligentPx_ComputerVision",
+      "apiVersion": "2016-02-01-preview",
+      "location": "[resourcegroup().location]",
+      "scale": null,
+      "properties": {},
+      "dependsOn": []
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "sku": {
+        "name": "F0"
+      },
+      "kind": "Face",
+      "name": "IntelligentPx_Face",
+      "apiVersion": "2016-02-01-preview",
+      "location": "[resourcegroup().location]",
+      "scale": null,
+      "properties": {},
+      "dependsOn": []
+    }
+  ]
+}
