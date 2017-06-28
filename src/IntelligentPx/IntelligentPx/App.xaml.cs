@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using FreshMvvm;
 using IntelligentPx.PageModels;
-using IntelligentPx.PageModels.CognitiveActions;
 using IntelligentPx.Services;
 using PCLAppConfig;
 using Xamarin.Forms.Xaml;
@@ -33,8 +32,6 @@ namespace IntelligentPx
         {
             FreshIOC.Container.Register<IPhotoService, PhotoService>();
             //FreshIOC.Container.Register<IPhotoService, Services.Mocks.MockPhotoService>();
-
-            FreshIOC.Container.Register<ICognitiveActionsFactory, CognitiveActionsFactory>();
         }
     }
 }
