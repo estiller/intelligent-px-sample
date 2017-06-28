@@ -1,5 +1,6 @@
 ﻿using FreshMvvm;
 using IntelligentPx.Models;
+using Xamarin.Forms;
 
 namespace IntelligentPx.PageModels
 {
@@ -11,5 +12,7 @@ namespace IntelligentPx.PageModels
         }
 
         public Photo Photo { get; set; }
+
+        public Command Analyze => new Command(async () => await CoreMethods.PushPageModel<PhotoAnalysisPageModel>(Photo));
     }
 }

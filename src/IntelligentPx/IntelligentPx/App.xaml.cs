@@ -32,6 +32,8 @@ namespace IntelligentPx
         {
             FreshIOC.Container.Register<IPhotoService, PhotoService>();
             //FreshIOC.Container.Register<IPhotoService, Services.Mocks.MockPhotoService>();
+
+            FreshIOC.Container.Register<IComputerVisionService, ComputerVisionService>();
         }
     }
 }

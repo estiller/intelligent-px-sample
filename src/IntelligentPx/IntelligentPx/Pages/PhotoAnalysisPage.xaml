@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<freshMvvm:FreshBaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IntelligentPx.Pages.PhotoAnalysisPage"
+             xmlns:converters="clr-namespace:IntelligentPx.Converters;assembly=IntelligentPx"
+             xmlns:freshMvvm="clr-namespace:FreshMvvm;assembly=FreshMvvm"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:rootPageModel="clr-namespace:IntelligentPx.PageModels;assembly=IntelligentPx"
+             d:DataContext="{d:DesignInstance rootPageModel:PhotoAnalysisPageModel}"
+             Title="Photo Analysis">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:JsonValueConverter x:Key="JsonValueConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView BackgroundColor="{Binding BackgroundColor}">
+            <StackLayout Orientation="Vertical">
+                <RelativeLayout x:Name="ImageLayout">
+                    <Image x:Name="Image" Source="{Binding Photo.Images.FullImage.HttpsUrl}"/>
+                    <!-- Face boxes are placed in code behind -->
+                </RelativeLayout>
+
+                <Label Text="Description:" TextColor="{Binding TextColor}" />
+                <Label Text="{Binding AnalysisResult.Description, Converter={StaticResource JsonValueConverter}}" BackgroundColor="{Binding BackgroundColorSecondary}" TextColor="{Binding TextColor}"/>
+
+                <Label Text="Color:" TextColor="{Binding TextColor}" />
+                <Label Text="{Binding AnalysisResult.Color, Converter={StaticResource JsonValueConverter}}" BackgroundColor="{Binding BackgroundColorSecondary}" TextColor="{Binding TextColor}"/>
+
+                <Label Text="Categories:" TextColor="{Binding TextColor}" />
+                <Label Text="{Binding AnalysisResult.Categories, Converter={StaticResource JsonValueConverter}}" BackgroundColor="{Binding BackgroundColorSecondary}" TextColor="{Binding TextColor}"/>
+
+                <Label Text="Tags:" TextColor="{Binding TextColor}" />
+                <Label Text="{Binding AnalysisResult.Tags, Converter={StaticResource JsonValueConverter}}" BackgroundColor="{Binding BackgroundColorSecondary}" TextColor="{Binding TextColor}"/>
+
+                <Label Text="Adult:" TextColor="{Binding TextColor}" />
+                <Label Text="{Binding AnalysisResult.Adult, Converter={StaticResource JsonValueConverter}}" BackgroundColor="{Binding BackgroundColorSecondary}" TextColor="{Binding TextColor}"/>
+
+                <Label Text="Faces:" TextColor="{Binding TextColor}" />
+                <Label Text="{Binding AnalysisResult.Faces, Converter={StaticResource JsonValueConverter}}" BackgroundColor="{Binding BackgroundColorSecondary}" TextColor="{Binding TextColor}"/>
+
+                <Label Text="ImageType:" TextColor="{Binding TextColor}" />
+                <Label Text="{Binding AnalysisResult.ImageType, Converter={StaticResource JsonValueConverter}}" BackgroundColor="{Binding BackgroundColorSecondary}" TextColor="{Binding TextColor}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</freshMvvm:FreshBaseContentPage>

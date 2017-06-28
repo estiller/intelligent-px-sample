@@ -8,6 +8,9 @@
              xmlns:rootPageModel="clr-namespace:IntelligentPx.PageModels;assembly=IntelligentPx"
              d:DataContext="{d:DesignInstance rootPageModel:PhotoDetailsPageModel}"
              Title="{Binding Photo.Name}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Analyze" Command="{Binding Analyze}" Order="Secondary" Priority="0" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
