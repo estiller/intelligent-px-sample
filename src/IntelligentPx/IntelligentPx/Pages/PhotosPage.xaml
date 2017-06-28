@@ -13,7 +13,7 @@
         <ToolbarItem Text="Refresh" Command="{Binding Refresh}" Order="Primary" Priority="1" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding PhotoCollection.Photos}" SelectedItem="{Binding SelectedPhoto}" >
+        <ListView ItemsSource="{Binding PhotoCollection.Photos}" SelectedItem="{Binding SelectedPhoto, Mode=TwoWay}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ImageCell Text="{Binding Name}" Detail="{Binding CopyrightNotice}" ImageSource="{Binding Images.PreviewImage.HttpsUrl}" />

@@ -1,4 +1,5 @@
-﻿using FreshMvvm;
+﻿using System;
+using FreshMvvm;
 using IntelligentPx.Models;
 using IntelligentPx.Services;
 using Xamarin.Forms;
@@ -37,7 +38,11 @@ namespace IntelligentPx.PageModels
 
         public Command Refresh => new Command(RefreshAsync);
 
-        public Command PhotoSelected => new Command(async photo => await CoreMethods.PushPageModel<PhotoDetailsPageModel>(photo));
+        public Command PhotoSelected => new Command(async photo =>
+        {
+            await CoreMethods.PushPageModel<PhotoDetailsPageModel>(photo);
+            SelectedPhoto = null;
+        });
 
         private async void RefreshAsync()
         {
