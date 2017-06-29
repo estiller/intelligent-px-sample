@@ -8,6 +8,9 @@
              xmlns:rootPageModel="clr-namespace:IntelligentPx.PageModels;assembly=IntelligentPx"
              d:DataContext="{d:DesignInstance rootPageModel:SearchPageModel}"
              Title="Search">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Train Project" Command="{Binding TrainProject}" Order="Secondary" Priority="0" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <SearchBar Placeholder="Enter search term" Text="{Binding SearchText}" SearchCommand="{Binding Search}"/>

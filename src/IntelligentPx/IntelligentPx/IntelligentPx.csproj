@@ -39,15 +39,32 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\JsonConverter.cs" />
+    <Compile Include="Models\CustomVision\Project.cs" />
+    <Compile Include="Models\CustomVision\ProjectDomain.cs" />
+    <Compile Include="Models\CustomVision\ProjectSettings.cs" />
+    <Compile Include="Models\CustomVision\Tag.cs" />
+    <Compile Include="Models\CustomVision\TagCollection.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ImageCollection.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\PhotoCollection.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="PageModels\ProjectTraining\NewTagPageModel.cs" />
+    <Compile Include="PageModels\ProjectTraining\NewTrainingProjectPageModel.cs" />
     <Compile Include="PageModels\PhotoAnalysisPageModel.cs" />
     <Compile Include="PageModels\PhotoDetailsPageModel.cs" />
     <Compile Include="PageModels\PhotosPageModel.cs" />
     <Compile Include="PageModels\SearchPageModel.cs" />
+    <Compile Include="PageModels\ProjectTraining\TrainProjectPageModel.cs" />
+    <Compile Include="Pages\ProjectTraining\NewTagPage.xaml.cs">
+      <DependentUpon>NewTagPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProjectTraining\TrainProjectPage.xaml.cs">
+      <DependentUpon>TrainProjectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProjectTraining\NewTrainingProjectPage.xaml.cs">
+      <DependentUpon>NewTrainingProjectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PhotoAnalysisPage.xaml.cs">
       <DependentUpon>PhotoAnalysisPage.xaml</DependentUpon>
     </Compile>
@@ -62,11 +79,16 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ComputerVisionService.cs" />
+    <Compile Include="Services\CustomVisionServiceTraining.cs" />
     <Compile Include="Services\IComputerVisionService.cs" />
+    <Compile Include="Services\ICustomVisionServiceTraining.cs" />
     <Compile Include="Services\IPhotoService.cs" />
     <Compile Include="Models\Avatars.cs" />
     <Compile Include="Services\Mocks\MockPhotoService.cs" />
     <Compile Include="Services\PhotoService.cs" />
+    <Compile Include="Services\TrainModelPage.xaml.cs">
+      <DependentUpon>TrainModelPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -130,7 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <EmbeddedResource Include="Secrets.config" />
     <None Include="Secrets.default.config" />
     <EmbeddedResource Include="Services\Mocks\CachedResponse.json" />
@@ -158,6 +182,30 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\PhotoAnalysisPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Services\TrainModelPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ProjectTraining\NewTrainingProjectPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ProjectTraining\TrainProjectPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ProjectTraining\NewTagPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

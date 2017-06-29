@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IntelligentPx.Services.TrainModelPage"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:rootPageModel="clr-namespace:IntelligentPx.PageModels;assembly=IntelligentPx"
+             xmlns:projectTraining="clr-namespace:IntelligentPx.PageModels.ProjectTraining;assembly=IntelligentPx"
+             d:DataContext="{d:DesignInstance projectTraining:TrainProjectPageModel}"
+             Title="Train Model">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New Project" Command="{Binding NewProject}" Order="Primary" Priority="0"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Choose project:" />
+            <Picker Title="Project"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

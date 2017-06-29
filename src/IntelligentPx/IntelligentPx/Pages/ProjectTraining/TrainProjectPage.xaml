@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IntelligentPx.Pages.ProjectTraining.TrainProjectPage"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:rootPageModel="clr-namespace:IntelligentPx.PageModels;assembly=IntelligentPx"
+             xmlns:projectTraining="clr-namespace:IntelligentPx.PageModels.ProjectTraining;assembly=IntelligentPx"
+             d:DataContext="{d:DesignInstance projectTraining:TrainProjectPageModel}"
+             Title="Train Model">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="New Project" Command="{Binding NewProject}" Order="Secondary" Priority="0" />
+        <ToolbarItem Text="New Tag" Command="{Binding NewTag}" Order="Secondary" Priority="1" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Picker Title="Project:" ItemsSource="{Binding Projects}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedProject}"/>
+            <Picker Title="Tag:" ItemsSource="{Binding Tags}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedTag}"/>
+            <Button Text="Upload Images" Command="{Binding Upload}"/>
+            <Button Text="Train Model" Command="{Binding Train}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
