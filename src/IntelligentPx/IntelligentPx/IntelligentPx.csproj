@@ -41,6 +41,7 @@
     <Compile Include="Converters\JsonConverter.cs" />
     <Compile Include="Extensions\HttpClientExtensions.cs" />
     <Compile Include="Extensions\HttpContentExtensions.cs" />
+    <Compile Include="Extensions\PhotoExtensions.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ImageCollection.cs" />
     <Compile Include="Models\Photo.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Models\CustomVision\TagCollection.cs" />
     <Compile Include="Models\CustomVision\TagPrediction.cs" />
     <Compile Include="PageModels\CustomVisionPredictionPageModel.cs" />
+    <Compile Include="PageModels\EmotionRecognitionPageModel.cs" />
     <Compile Include="PageModels\ProjectTraining\NewTagPageModel.cs" />
     <Compile Include="PageModels\ProjectTraining\NewTrainingProjectPageModel.cs" />
     <Compile Include="PageModels\PhotoAnalysisPageModel.cs" />
@@ -64,6 +66,9 @@
     <Compile Include="PageModels\ProjectTraining\TrainProjectPageModel.cs" />
     <Compile Include="Pages\CustomVisionPredictionPage.xaml.cs">
       <DependentUpon>CustomVisionPredictionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmotionRecognitionPage.xaml.cs">
+      <DependentUpon>EmotionRecognitionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProjectTraining\NewTagPage.xaml.cs">
       <DependentUpon>NewTagPage.xaml</DependentUpon>
@@ -90,9 +95,11 @@
     <Compile Include="Services\ComputerVisionService.cs" />
     <Compile Include="Services\CustomVisionServicePrediction.cs" />
     <Compile Include="Services\CustomVisionServiceTraining.cs" />
+    <Compile Include="Services\EmotionService.cs" />
     <Compile Include="Services\IComputerVisionService.cs" />
     <Compile Include="Services\ICustomVisionServicePrediction.cs" />
     <Compile Include="Services\ICustomVisionServiceTraining.cs" />
+    <Compile Include="Services\IEmotionService.cs" />
     <Compile Include="Services\IPhotoService.cs" />
     <Compile Include="Models\Avatars.cs" />
     <Compile Include="Services\Mocks\MockPhotoService.cs" />
@@ -110,6 +117,12 @@
     </Reference>
     <Reference Include="FreshMvvm, Version=1.0.6071.17008, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FreshMvvm.2.2.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\FreshMvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ProjectOxford.Common, Version=1.0.324.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ProjectOxford.Common.1.0.324\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ProjectOxford.Emotion, Version=1.0.336.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ProjectOxford.Emotion.1.0.336\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Emotion.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ProjectOxford.Vision, Version=1.0.393.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.ProjectOxford.Vision.1.0.393\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10\Microsoft.ProjectOxford.Vision.dll</HintPath>
@@ -214,6 +227,22 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\EmotionRecognitionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Emotions\Anger.png" />
+    <EmbeddedResource Include="Resources\Emotions\Contempt.png" />
+    <EmbeddedResource Include="Resources\Emotions\Disgust.png" />
+    <EmbeddedResource Include="Resources\Emotions\Fear.png" />
+    <EmbeddedResource Include="Resources\Emotions\Happiness.png" />
+    <EmbeddedResource Include="Resources\Emotions\Neutral.png" />
+    <EmbeddedResource Include="Resources\Emotions\Sadness.png" />
+    <EmbeddedResource Include="Resources\Emotions\Surprise.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
