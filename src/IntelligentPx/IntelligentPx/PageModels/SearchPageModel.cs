@@ -33,7 +33,11 @@ namespace IntelligentPx.PageModels
 
         public Command Search => new Command(SearchAsync);
 
-        public Command PhotoSelected => new Command(async photo => await CoreMethods.PushPageModel<PhotoDetailsPageModel>(photo));
+        public Command PhotoSelected => new Command(async photo =>
+        {
+            await CoreMethods.PushPageModel<PhotoDetailsPageModel>(photo);
+            SelectedPhoto = null;
+        });
 
         public Command TrainProject => new Command(async () => await CoreMethods.PushPageModel<TrainProjectPageModel>(PhotoCollection));
 

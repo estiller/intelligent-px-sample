@@ -39,6 +39,13 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\JsonConverter.cs" />
+    <Compile Include="Extensions\HttpClientExtensions.cs" />
+    <Compile Include="Extensions\HttpContentExtensions.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\ImageCollection.cs" />
+    <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\PhotoCollection.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\CustomVision\Iteration.cs" />
     <Compile Include="Models\CustomVision\Prediction.cs" />
     <Compile Include="Models\CustomVision\Project.cs" />
@@ -47,11 +54,6 @@
     <Compile Include="Models\CustomVision\Tag.cs" />
     <Compile Include="Models\CustomVision\TagCollection.cs" />
     <Compile Include="Models\CustomVision\TagPrediction.cs" />
-    <Compile Include="Models\Image.cs" />
-    <Compile Include="Models\ImageCollection.cs" />
-    <Compile Include="Models\Photo.cs" />
-    <Compile Include="Models\PhotoCollection.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="PageModels\CustomVisionPredictionPageModel.cs" />
     <Compile Include="PageModels\ProjectTraining\NewTagPageModel.cs" />
     <Compile Include="PageModels\ProjectTraining\NewTrainingProjectPageModel.cs" />
@@ -142,9 +144,6 @@
     </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Primitives, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net40+sl4+win8+wp71+wpa81\System.Net.Http.Primitives.dll</HintPath>

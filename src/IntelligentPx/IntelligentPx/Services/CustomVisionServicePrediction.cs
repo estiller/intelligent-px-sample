@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IntelligentPx.Extensions;
 using IntelligentPx.Models.CustomVision;
 using PCLAppConfig;
 
