@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using FreshMvvm;
 using IntelligentPx.Models;
 using IntelligentPx.Services;
@@ -17,7 +17,7 @@ namespace IntelligentPx.PageModels
 
         public override void Init(object initData)
         {
-            RefreshAsync();
+            Upcoming.Execute(null);
         }
 
         public PhotoCollection PhotoCollection { get; set; }
@@ -36,7 +36,9 @@ namespace IntelligentPx.PageModels
 
         public Command Search => new Command(async () => await CoreMethods.PushPageModel<SearchPageModel>());
 
-        public Command Refresh => new Command(RefreshAsync);
+        public Command Upcoming => new Command(async () => await RefreshAsync(PhotoStreamFeatures.Upcoming));
+
+        public Command Popular => new Command(async () => await RefreshAsync(PhotoStreamFeatures.Popular));
 
         public Command PhotoSelected => new Command(async photo =>
         {
@@ -44,9 +46,9 @@ namespace IntelligentPx.PageModels
             SelectedPhoto = null;
         });
 
-        private async void RefreshAsync()
+        private async Task RefreshAsync(string featureName)
         {
-            PhotoCollection = await _photoService.GetPhotosAsync();
+            PhotoCollection = await _photoService.GetPhotosAsync(featureName);
         }
     }
 }

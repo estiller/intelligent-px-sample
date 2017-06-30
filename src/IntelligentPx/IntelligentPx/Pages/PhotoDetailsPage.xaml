@@ -9,6 +9,7 @@
              d:DataContext="{d:DesignInstance rootPageModel:PhotoDetailsPageModel}"
              Title="{Binding Photo.Name}">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Comments" Command="{Binding Comments}" Order="Primary" Priority="0" />
         <ToolbarItem Text="Analyze" Command="{Binding Analyze}" Order="Secondary" Priority="0" />
         <ToolbarItem Text="Custom Vision" Command="{Binding CustomVision}" Order="Secondary" Priority="0" />
         <ToolbarItem Text="Emotion" Command="{Binding Emotion}" Order="Secondary" Priority="0" />

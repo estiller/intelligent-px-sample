@@ -42,10 +42,13 @@
     <Compile Include="Extensions\HttpClientExtensions.cs" />
     <Compile Include="Extensions\HttpContentExtensions.cs" />
     <Compile Include="Extensions\PhotoExtensions.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ImageCollection.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\PhotoCollection.cs" />
+    <Compile Include="Models\PhotoComments.cs" />
+    <Compile Include="Models\ShortUser.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\CustomVision\Iteration.cs" />
     <Compile Include="Models\CustomVision\Prediction.cs" />
@@ -58,6 +61,7 @@
     <Compile Include="PageModels\CustomVisionPredictionPageModel.cs" />
     <Compile Include="PageModels\EmotionRecognitionPageModel.cs" />
     <Compile Include="PageModels\FaceDetectionPageModel.cs" />
+    <Compile Include="PageModels\PhotoCommentsPageModel.cs" />
     <Compile Include="PageModels\ProjectTraining\NewTagPageModel.cs" />
     <Compile Include="PageModels\ProjectTraining\NewTrainingProjectPageModel.cs" />
     <Compile Include="PageModels\PhotoAnalysisPageModel.cs" />
@@ -73,6 +77,9 @@
     </Compile>
     <Compile Include="Pages\FaceDetectionPage.xaml.cs">
       <DependentUpon>FaceDetectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PhotoCommentsPage.xaml.cs">
+      <DependentUpon>PhotoCommentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProjectTraining\NewTagPage.xaml.cs">
       <DependentUpon>NewTagPage.xaml</DependentUpon>
@@ -256,6 +263,12 @@
     <EmbeddedResource Include="Resources\Emotions\Neutral.png" />
     <EmbeddedResource Include="Resources\Emotions\Sadness.png" />
     <EmbeddedResource Include="Resources\Emotions\Surprise.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\PhotoCommentsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

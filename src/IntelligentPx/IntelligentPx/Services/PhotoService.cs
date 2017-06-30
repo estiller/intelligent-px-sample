@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 using IntelligentPx.Extensions;
@@ -16,9 +17,9 @@ namespace IntelligentPx.Services
             BaseAddress = new Uri("https://api.500px.com/v1/")
         };
 
-        public async Task<PhotoCollection> GetPhotosAsync()
+        public async Task<PhotoCollection> GetPhotosAsync(string featureName)
         {
-            var response = await _httpClient.GetAsync($"photos?feature=upcoming&exclude=Nude&rpp=50&image_size={ImageCollection.PreviewImageSize},{ImageCollection.FullImageSize}&consumer_key={_consumerKey}");
+            var response = await _httpClient.GetAsync($"photos?feature={featureName}&exclude=Nude&rpp=50&image_size={ImageCollection.PreviewImageSize},{ImageCollection.FullImageSize}&consumer_key={_consumerKey}");
             response.EnsureSuccessStatusCode();
 
             return await response.Content.ReadAsAsync<PhotoCollection>();
@@ -30,6 +31,14 @@ namespace IntelligentPx.Services
             response.EnsureSuccessStatusCode();
 
             return await response.Content.ReadAsAsync<PhotoCollection>();
+        }
+
+        public async Task<PhotoComments> GetComments(int photoId)
+        {
+            var response = await _httpClient.GetAsync($"photos/{photoId.ToString(CultureInfo.InvariantCulture)}/comments?consumer_key={_consumerKey}");
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsAsync<PhotoComments>();
         }
     }
 }

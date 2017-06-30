@@ -8,7 +8,7 @@ namespace IntelligentPx.Services.Mocks
 {
     internal class MockPhotoService : IPhotoService
     {
-        public Task<PhotoCollection> GetPhotosAsync()
+        public Task<PhotoCollection> GetPhotosAsync(string featureName)
         {
             string response = ReadResponse();
             var result = JsonConvert.DeserializeObject<PhotoCollection>(response);
@@ -17,7 +17,12 @@ namespace IntelligentPx.Services.Mocks
 
         public Task<PhotoCollection> SearchPhotosAsync(string searchTerm)
         {
-            return GetPhotosAsync();
+            return GetPhotosAsync(null);
+        }
+
+        public Task<PhotoComments> GetComments(int photoId)
+        {
+            return Task.FromResult(new PhotoComments());
         }
 
         private static string ReadResponse()

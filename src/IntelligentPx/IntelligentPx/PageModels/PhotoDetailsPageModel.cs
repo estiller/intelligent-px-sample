@@ -13,6 +13,8 @@ namespace IntelligentPx.PageModels
 
         public Photo Photo { get; set; }
 
+        public Command Comments => new Command(async () => await CoreMethods.PushPageModel<PhotoCommentsPageModel>(Photo));
+
         public Command Analyze => new Command(async () => await CoreMethods.PushPageModel<PhotoAnalysisPageModel>(Photo));
 
         public Command CustomVision => new Command(async () => await CoreMethods.PushPageModel<CustomVisionPredictionPageModel>(Photo));
