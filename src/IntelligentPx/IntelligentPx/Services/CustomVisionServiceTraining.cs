@@ -78,5 +78,13 @@ namespace IntelligentPx.Services
             var response = await _httpClient.PostAsync($"projects/{projectId}/train", new StringContent(string.Empty));
             response.EnsureSuccessStatusCode();
         }
+
+        public async Task<Iteration[]> GetIterations(string projectId)
+        {
+            var response = await _httpClient.GetAsync($"projects/{projectId}/iterations");
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsAsync<Iteration[]>();
+        }
     }
 }

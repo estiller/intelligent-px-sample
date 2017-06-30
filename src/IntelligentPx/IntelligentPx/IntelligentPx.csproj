@@ -39,16 +39,20 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\JsonConverter.cs" />
+    <Compile Include="Models\CustomVision\Iteration.cs" />
+    <Compile Include="Models\CustomVision\Prediction.cs" />
     <Compile Include="Models\CustomVision\Project.cs" />
     <Compile Include="Models\CustomVision\ProjectDomain.cs" />
     <Compile Include="Models\CustomVision\ProjectSettings.cs" />
     <Compile Include="Models\CustomVision\Tag.cs" />
     <Compile Include="Models\CustomVision\TagCollection.cs" />
+    <Compile Include="Models\CustomVision\TagPrediction.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ImageCollection.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\PhotoCollection.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="PageModels\CustomVisionPredictionPageModel.cs" />
     <Compile Include="PageModels\ProjectTraining\NewTagPageModel.cs" />
     <Compile Include="PageModels\ProjectTraining\NewTrainingProjectPageModel.cs" />
     <Compile Include="PageModels\PhotoAnalysisPageModel.cs" />
@@ -56,6 +60,9 @@
     <Compile Include="PageModels\PhotosPageModel.cs" />
     <Compile Include="PageModels\SearchPageModel.cs" />
     <Compile Include="PageModels\ProjectTraining\TrainProjectPageModel.cs" />
+    <Compile Include="Pages\CustomVisionPredictionPage.xaml.cs">
+      <DependentUpon>CustomVisionPredictionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProjectTraining\NewTagPage.xaml.cs">
       <DependentUpon>NewTagPage.xaml</DependentUpon>
     </Compile>
@@ -79,8 +86,10 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ComputerVisionService.cs" />
+    <Compile Include="Services\CustomVisionServicePrediction.cs" />
     <Compile Include="Services\CustomVisionServiceTraining.cs" />
     <Compile Include="Services\IComputerVisionService.cs" />
+    <Compile Include="Services\ICustomVisionServicePrediction.cs" />
     <Compile Include="Services\ICustomVisionServiceTraining.cs" />
     <Compile Include="Services\IPhotoService.cs" />
     <Compile Include="Models\Avatars.cs" />
@@ -206,6 +215,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\ProjectTraining\NewTagPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\CustomVisionPredictionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

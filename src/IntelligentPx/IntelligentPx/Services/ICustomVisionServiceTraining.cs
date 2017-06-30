@@ -13,5 +13,6 @@ namespace IntelligentPx.Services
         Task<Tag> CreateTag(string projectId, string name, string description);
         Task CreateImages(string projectId, string tagId, IEnumerable<string> urls);
         Task TrainProject(string projectId);
+        Task<Iteration[]> GetIterations(string projectId);
     }
 }

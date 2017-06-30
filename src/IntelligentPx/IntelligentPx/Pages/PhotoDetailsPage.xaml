@@ -10,6 +10,7 @@
              Title="{Binding Photo.Name}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Analyze" Command="{Binding Analyze}" Order="Secondary" Priority="0" />
+        <ToolbarItem Text="Custom Vision" Command="{Binding CustomVision}" Order="Secondary" Priority="0" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>

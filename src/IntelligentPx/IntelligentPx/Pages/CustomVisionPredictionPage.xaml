@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IntelligentPx.Pages.CustomVisionPredictionPage"
+             xmlns:converters="clr-namespace:IntelligentPx.Converters;assembly=IntelligentPx"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:rootPageModel="clr-namespace:IntelligentPx.PageModels;assembly=IntelligentPx"
+             d:DataContext="{d:DesignInstance rootPageModel:CustomVisionPredictionPageModel}"
+             Title="Custom Vision">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:JsonValueConverter x:Key="JsonValueConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Image Source="{Binding Photo.Images.FullImage.HttpsUrl}"/>
+                <Picker Title="Project:" ItemsSource="{Binding Projects}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedProject}" />
+                <Picker Title="Iteration:" ItemsSource="{Binding Iterations}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedIteration}" />
+                <Button Text="Analyze" Command="{Binding Analyze}"/>
+                <Label Text="Result:" />
+                <Label Text="{Binding Prediction, Converter={StaticResource JsonValueConverter}}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
