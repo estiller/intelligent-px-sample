@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<freshMvvm:FreshBaseContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IntelligentPx.Pages.FaceDetectionPage"
+             xmlns:converters="clr-namespace:IntelligentPx.Converters;assembly=IntelligentPx"
+             xmlns:freshMvvm="clr-namespace:FreshMvvm;assembly=FreshMvvm"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:rootPageModel="clr-namespace:IntelligentPx.PageModels;assembly=IntelligentPx"
+             d:DataContext="{d:DesignInstance rootPageModel:FaceDetectionPageModel}"
+             Title="Photo Analysis">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:JsonValueConverter x:Key="JsonValueConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout Orientation="Vertical">
+        <RelativeLayout x:Name="ImageLayout">
+          <Image x:Name="Image" Source="{Binding Photo.Images.FullImage.HttpsUrl}"/>
+          <!-- Face boxes are placed in code behind -->
+        </RelativeLayout>
+
+        <Label Text="{Binding Faces, Converter={StaticResource JsonValueConverter}}" />
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
+</freshMvvm:FreshBaseContentPage>

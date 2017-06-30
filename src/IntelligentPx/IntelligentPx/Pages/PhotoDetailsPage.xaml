@@ -12,6 +12,7 @@
         <ToolbarItem Text="Analyze" Command="{Binding Analyze}" Order="Secondary" Priority="0" />
         <ToolbarItem Text="Custom Vision" Command="{Binding CustomVision}" Order="Secondary" Priority="0" />
         <ToolbarItem Text="Emotion" Command="{Binding Emotion}" Order="Secondary" Priority="0" />
+        <ToolbarItem Text="Face Detection" Command="{Binding FaceDetection}" Order="Secondary" Priority="0" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>

@@ -19,5 +19,6 @@ namespace IntelligentPx.PageModels
 
         public Command Emotion => new Command(async () => await CoreMethods.PushPageModel<EmotionRecognitionPageModel>(Photo));
 
+        public Command FaceDetection => new Command(async () => await CoreMethods.PushPageModel<FaceDetectionPageModel>(Photo));
     }
 }
