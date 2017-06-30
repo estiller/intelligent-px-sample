@@ -38,6 +38,7 @@ namespace IntelligentPx
             FreshIOC.Container.Register<ICustomVisionServicePrediction, CustomVisionServicePrediction>();
             FreshIOC.Container.Register<IEmotionService, EmotionService>();
             FreshIOC.Container.Register<IFaceDetectionService, FaceDetectionService>();
+            FreshIOC.Container.Register<ITextAnalyticsService, TextAnalyticsService>();
         }
     }
 }

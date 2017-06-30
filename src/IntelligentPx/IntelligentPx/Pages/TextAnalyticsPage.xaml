@@ -1,23 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IntelligentPx.Pages.PhotoCommentsPage"
+             x:Class="IntelligentPx.Pages.TextAnalyticsPage"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:rootPageModel="clr-namespace:IntelligentPx.PageModels;assembly=IntelligentPx"
-             d:DataContext="{d:DesignInstance rootPageModel:PhotoCommentsPageModel}"
-             Title="Comments">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Analyze" Command="{Binding Analyze}" Order="Secondary" Priority="0" />
-    </ContentPage.ToolbarItems>
+             d:DataContext="{d:DesignInstance rootPageModel:TextAnalyticsPageModel}"
+             Title="Text Analytics">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
-                <ListView ItemsSource="{Binding PhotoComments.Comments}" >
+                <ListView ItemsSource="{Binding DisplayCells}" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ImageCell Text="{Binding Body}" ImageSource="{Binding User.UserpicUrl}" />
+                            <ImageCell Text="{Binding Text}" Detail="{Binding Detail}" ImageSource="{Binding ImageSource}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

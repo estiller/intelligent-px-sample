@@ -1,6 +1,7 @@
 using FreshMvvm;
 using IntelligentPx.Models;
 using IntelligentPx.Services;
+using Xamarin.Forms;
 
 namespace IntelligentPx.PageModels
 {
@@ -15,12 +16,12 @@ namespace IntelligentPx.PageModels
 
         public override async void Init(object initData)
         {
-            Photo = (Photo)initData;
-            PhotoComments = await _photoService.GetComments(Photo.Id);
+            var photo = (Photo)initData;
+            PhotoComments = await _photoService.GetComments(photo.Id);
         }
 
-        public Photo Photo { get; private set; }
-
         public PhotoComments PhotoComments { get; private set; }
+
+        public Command Analyze => new Command(async () => await CoreMethods.PushPageModel<TextAnalyticsPageModel>(PhotoComments));
     }
 }
