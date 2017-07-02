@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Acr.UserDialogs;
 using FreshMvvm;
 using IntelligentPx.PageModels;
 using IntelligentPx.Services;
@@ -30,6 +31,8 @@ namespace IntelligentPx
 
         private static void RegisterDependencies()
         {
+            FreshIOC.Container.Register(UserDialogs.Instance);
+
             FreshIOC.Container.Register<IPhotoService, PhotoService>();
             //FreshIOC.Container.Register<IPhotoService, Services.Mocks.MockPhotoService>();
 
@@ -40,6 +43,7 @@ namespace IntelligentPx
             FreshIOC.Container.Register<IFaceDetectionService, FaceDetectionService>();
             FreshIOC.Container.Register<ITextAnalyticsService, TextAnalyticsService>();
             FreshIOC.Container.Register<IAutoSuggestService, AutoSuggestService>();
+            FreshIOC.Container.Register<ISpeechRecognition, SpeechRecognition>();
         }
     }
 }

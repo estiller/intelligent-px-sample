@@ -10,11 +10,12 @@
              d:DataContext="{d:DesignInstance rootPageModel:SearchPageModel}"
              Title="Search">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Speech" Command="{Binding SpeechRecognition}" Order="Primary" Priority="0" />
         <ToolbarItem Text="Train Project" Command="{Binding TrainProject}" Order="Secondary" Priority="0" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <controls:AutoCompleteView Placeholder="Enter search term" Text="{Binding SearchText}" SearchCommand="{Binding Search}" Suggestions="{Binding Suggestions}" ExecuteOnSuggestionClick="True"/>
+            <controls:AutoCompleteView Placeholder="Enter search term" Text="{Binding SearchText, Mode=TwoWay}" SearchCommand="{Binding Search}" Suggestions="{Binding Suggestions}" ExecuteOnSuggestionClick="True"/>
             <ListView ItemsSource="{Binding PhotoCollection.Photos}" SelectedItem="{Binding SelectedPhoto, Mode=TwoWay}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>

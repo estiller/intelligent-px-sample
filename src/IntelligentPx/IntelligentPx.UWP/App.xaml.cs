@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using IntelligentPx.Services;
+using IntelligentPx.UWP.Services;
 
 namespace IntelligentPx.UWP
 {
@@ -58,6 +60,7 @@ namespace IntelligentPx.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
+                FreshTinyIoC.FreshTinyIoCContainer.Current.Register<IWavRecorder, WavRecorder>();
                 Xamarin.Forms.Forms.Init(e);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)

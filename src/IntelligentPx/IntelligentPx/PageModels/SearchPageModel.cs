@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading;
+using System.Threading.Tasks;
+using Acr.UserDialogs;
 using FreshMvvm;
 using IntelligentPx.Models;
 using IntelligentPx.PageModels.ProjectTraining;
 using IntelligentPx.Services;
+using PCLStorage;
 using Xamarin.Forms;
 
 namespace IntelligentPx.PageModels
@@ -15,13 +17,17 @@ namespace IntelligentPx.PageModels
     {
         private readonly IPhotoService _photoService;
         private readonly IAutoSuggestService _autoSuggestService;
+        private readonly ISpeechRecognition _speechRecognition;
+        private readonly IUserDialogs _userDialogs;
 
         private IDisposable _suggestionObserver;
 
-        public SearchPageModel(IPhotoService photoService, IAutoSuggestService autoSuggestService)
+        public SearchPageModel(IPhotoService photoService, IAutoSuggestService autoSuggestService, ISpeechRecognition speechRecognition, IUserDialogs userDialogs)
         {
             _photoService = photoService;
             _autoSuggestService = autoSuggestService;
+            _speechRecognition = speechRecognition;
+            _userDialogs = userDialogs;
         }
 
         protected override void ViewIsAppearing(object sender, EventArgs e)
@@ -65,7 +71,7 @@ namespace IntelligentPx.PageModels
 
         public string[] Suggestions { get; set; }
 
-        public Command Search => new Command(SearchAsync);
+        public Command Search => new Command(async () => await SearchAsync());
 
         public Command PhotoSelected => new Command(async photo =>
         {
@@ -75,12 +81,31 @@ namespace IntelligentPx.PageModels
 
         public Command TrainProject => new Command(async () => await CoreMethods.PushPageModel<TrainProjectPageModel>(PhotoCollection));
 
-        private async void SearchAsync()
+        public Command SpeechRecognition => new Command(async () => await RecognizeSpeech());
+
+        private async Task SearchAsync()
         {
             if (SearchText != null)
             {
                 PhotoCollection = await _photoService.SearchPhotosAsync(SearchText);
             }
+        }
+        private async Task RecognizeSpeech()
+        {
+            if (Device.RuntimePlatform != Device.Windows)
+            {
+                await _userDialogs.AlertAsync("Only on Windows...");
+                return;
+            }
+
+            var recorder = FreshIOC.Container.Resolve<IWavRecorder>();
+            await recorder.StartRecordAsync();
+            await _userDialogs.AlertAsync("Speak!", okText: "Stop");
+
+            var filePath = await recorder.EndRecordAsync();
+            SearchText = await _speechRecognition.RecognizeSpeechAsync(filePath);
+
+            await (await FileSystem.Current.GetFileFromPathAsync(filePath)).DeleteAsync();
         }
     }
 }

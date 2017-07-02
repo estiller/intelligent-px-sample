@@ -21,6 +21,7 @@
 // Changes made to the source file in this copy -
 // * Calling "TextValueChanged" when the suggestions list changes.
 // * Changed the namespace
+// * Set the entry text value, when text is updated from code
 
 using System;
 using System.Collections;
@@ -30,6 +31,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using Xamarin.Forms;
 
+#pragma warning disable CS0618 // Type or member is obsolete
 namespace IntelligentPx.Controls
 {
     /// <summary>
@@ -37,9 +39,9 @@ namespace IntelligentPx.Controls
     /// </summary>
     public class AutoCompleteView : ContentView
     {
-        /// <summary>
-        /// The execute on suggestion click property.
-        /// </summary>
+                              /// <summary>
+                              /// The execute on suggestion click property.
+                              /// </summary>
         public static readonly BindableProperty ExecuteOnSuggestionClickProperty = BindableProperty.Create<AutoCompleteView, bool>(p => p.ExecuteOnSuggestionClick, false);
 
         /// <summary>
@@ -737,6 +739,9 @@ namespace IntelligentPx.Controls
 
             if (control != null)
             {
+                if (control._entText.Text != newPlaceHolderValue)
+                    control._entText.Text = newPlaceHolderValue;
+
                 control._btnSearch.IsEnabled = !string.IsNullOrEmpty(newPlaceHolderValue);
 
                 var cleanedNewPlaceHolderValue = Regex.Replace((newPlaceHolderValue ?? string.Empty).ToLowerInvariant(), @"\s+", string.Empty);
@@ -821,3 +826,4 @@ namespace IntelligentPx.Controls
         }
     }
 }
+#pragma warning restore CS0618 // Type or member is obsolete

@@ -20,6 +20,7 @@ namespace IntelligentPx.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            Acr.UserDialogs.UserDialogs.Init(() => (Activity) Xamarin.Forms.Forms.Context);
             LoadApplication(new App());
         }
     }
