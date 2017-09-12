@@ -45,7 +45,13 @@ namespace IntelligentPx.PageModels
 
         private async void Analyze()
         {
-            AnalysisResult = await _computerVisionService.Analyze(Photo.Images.FullImage.HttpsUrl);
+            var url = ToHttp(Photo.Images.FullImage.HttpsUrl);  // ToHttp: Temoporary workaround for Analysis Service with specific TLS version/implementation
+            AnalysisResult = await _computerVisionService.Analyze(url);
+        }
+
+        private static string ToHttp(string httpsUrl)
+        {
+            return httpsUrl.Replace("https", "http");
         }
     }
 }
