@@ -92,7 +92,7 @@ namespace IntelligentPx.PageModels
         }
         private async Task RecognizeSpeech()
         {
-            if (Device.RuntimePlatform != Device.Windows)
+            if (Device.RuntimePlatform != Device.UWP)
             {
                 await _userDialogs.AlertAsync("Only on Windows...");
                 return;
