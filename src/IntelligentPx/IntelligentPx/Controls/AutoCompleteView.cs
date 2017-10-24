@@ -207,6 +207,9 @@ namespace IntelligentPx.Controls
             };
             _lstSuggestions.ItemSelected += (s, e) =>
             {
+                if (e.SelectedItem == null)
+                    return;
+
                 _entText.Text = e.SelectedItem.ToString();
 
                 _availableSuggestions.Clear();
